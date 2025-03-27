@@ -4,36 +4,6 @@ Este proyecto es una aplicación gráfica de una máquina tragaperras temática 
 
 ## Características
 
-- **Interfaz gráfica**: Utiliza `customtkinter` para un diseño atractivo y personalizable.
-- **Efectos visuales**: Animaciones y cambios de color durante el giro de los rodillos.
-- **Sonidos**: Incluye efectos de sonido para tiradas, premios, errores y avances.
-- **Modo de avance**: Gira un rodillo específico cuando se obtienen dos símbolos iguales.
-- **Temática de perritos**: Los símbolos de los rodillos son emojis de perros.
-
-## Requisitos del sistema
-
-- Python 3.8 o superior.
-- Las siguientes bibliotecas de Python:
-  - `customtkinter==5.2.0`
-  - `pygame==2.5.0`
-  - `Pillow==10.0.0`
-  - `tkinter` (incluido en la instalación estándar de Python).
-
-## Instalación
-
-1. Clona este repositorio o descarga los archivos en tu máquina local.
-2. Asegúrate de tener Python instalado. Puedes verificarlo ejecutando:
-
-   ```bash
-   python --version
-
-Recopilando información del área de trabajo```markdown
-# Máquina Tragaperritos VIP 🎰🐶
-
-Este proyecto es una aplicación gráfica de una máquina tragaperras temática de perritos, desarrollada en Python utilizando las bibliotecas `customtkinter`, `pygame` y `Pillow`. La aplicación incluye efectos visuales, sonidos y animaciones para simular una experiencia de juego interactiva.
-
-## Características
-
 - **Interfaz gráfica moderna**: Utiliza `customtkinter` para un diseño atractivo y personalizable.
 - **Efectos visuales**: Animaciones y cambios de color durante el giro de los rodillos.
 - **Sonidos**: Incluye efectos de sonido para tiradas, premios, errores y avances.
