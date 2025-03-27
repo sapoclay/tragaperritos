@@ -27,14 +27,7 @@ Este proyecto es una aplicación gráfica de una máquina tragaperras temática 
    ```bash
    python --version
    ```
-
-3. Instala las dependencias necesarias utilizando el archivo `requirements.txt`:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Asegúrate de que los archivos de sonido (`tirada.mp3`, `ganar.mp3`, `error.mp3`, `avance.mp3`) estén en la carpeta `sonidos/` dentro del directorio del proyecto.
+3. Asegúrate de que los archivos de sonido (`tirada.mp3`, `ganar.mp3`, `error.mp3`, `avance.mp3`) estén en la carpeta `sonidos/` dentro del directorio del proyecto.
 
 ## Ejecución
 
@@ -44,13 +37,19 @@ Este proyecto es una aplicación gráfica de una máquina tragaperras temática 
    cd /ruta/a/Tragaperritos
    ```
 
-2. Ejecuta el archivo principal `tragaperritos.py`:
+2. Ejecuta el archivo principal `tragaperritos.py` o el archivo alternativo `run_app.py`. El archivo `run_app.py`instalará automáticamente las dependencias desde el archivo requirements.txt. De no utilizarlo, habrá que instalarlas manualmente con `pip install -r requirements.txt`. Por eso, para ejecutar este programa, basta con escribir en la terminal:
 
    ```bash
    python tragaperritos.py
    ```
 
-3. Se abrirá una ventana con la interfaz gráfica de la máquina tragaperritos. Sigue las instrucciones en pantalla para jugar.
+   o
+
+   ```bash
+   python run_app.py
+   ```
+
+3. Tras lanzar el programa, se abrirá una ventana con la interfaz gráfica de la máquina tragaperritos. Sigue las instrucciones en pantalla para jugar.
 
 ## Cómo jugar
 
@@ -67,8 +66,9 @@ Este proyecto es una aplicación gráfica de una máquina tragaperras temática 
 ## Estructura del proyecto
 
 ```
+run_app.py         # Archivo para iniciar el programa, creando un entorno virtual e instalando en el las dependencias para ejecutar el programa
 requirements.txt   # Archivo con las dependencias del proyecto.
-tragaperritos.py     # Código principal de la aplicación.
+tragaperritos.py   # Código principal de la aplicación.
 sonidos/           # Carpeta que contiene los archivos de sonido.
     avance.mp3
     error.mp3
@@ -82,7 +82,7 @@ Puedes personalizar los colores, fuentes y sonidos modificando las constantes de
 
 - **Colores**: Cambia las constantes `COLOR_FONDO`, `COLOR_ACENTO`, etc.
 - **Fuentes**: Modifica las constantes `FUENTE_TITULO`, `FUENTE_TEXTO`, etc.
-- **Sonidos**: Sustituye los archivos de sonido en la carpeta `sonidos/`.
+- **Sonidos**: Sustituye los archivos de sonido en la carpeta `sonidos/` manteniendo el mismo nombre.
 
 ## Créditos
 
@@ -92,5 +92,4 @@ Este proyecto fue desarrollado como una demostración de una aplicación gráfic
 - [pygame](https://www.pygame.org/)
 - [Pillow](https://python-pillow.org/)
 
-¡Diviértete jugando con la Máquina Tragaperritos VIP! 🎰🐕
-```
+🐕🎰¡Diviértete jugando con la Máquina Tragaperritos VIP! 🎰🐕
