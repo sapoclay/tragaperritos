@@ -4,6 +4,8 @@ Este proyecto es una aplicación gráfica de una máquina tragaperras temática 
 
 ## Características
 
+![Peek 2025-03-29 00-46](https://github.com/user-attachments/assets/36cf631f-27d6-491f-b76f-ac0547f333ce)
+
 - **Interfaz gráfica moderna**: Utiliza `customtkinter` para un diseño atractivo y personalizable.
 - **Efectos visuales**: Animaciones y cambios de color durante el giro de los rodillos.
 - **Sonidos**: Incluye efectos de sonido para tiradas, premios, errores y avances.
