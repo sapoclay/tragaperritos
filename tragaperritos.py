@@ -613,8 +613,6 @@ class MaquinaTragaperras:
                 corner_radius=20
             ).pack(pady=20)
     
-    # Resto de métodos similares al original
-    # manteniendo los nuevos estilos
 
 def main():
     root = ctk.CTk()
