@@ -1,0 +1,11 @@
+:root {
+    --color-fondo: #1a1a1a;
+    --color-acento: #FFD700;
+    --color-secundario: #C0C0C0;
+    --color-boton: #E74C3C;
+
+    --fuente-titulo: "Arial Black";
+    --fuente-texto: "Impact";
+    --fuente-numeros: "LCDMono";
+    --fuente-simbolos: "Arial";
+}

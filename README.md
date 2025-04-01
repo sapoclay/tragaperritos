@@ -42,13 +42,13 @@ Este proyecto es una aplicación gráfica de una máquina tragaperras temática 
 2. Ejecuta el archivo principal `tragaperritos.py` o el archivo alternativo `run_app.py`. El archivo `run_app.py`instalará automáticamente las dependencias desde el archivo requirements.txt. De no utilizarlo, habrá que instalarlas manualmente con `pip install -r requirements.txt`. Por eso, para ejecutar este programa, basta con escribir en la terminal:
 
    ```bash
-   python tragaperritos.py
+   python3 tragaperritos.py
    ```
 
    o
 
    ```bash
-   python run_app.py
+   python3 run_app.py
    ```
 
 3. Tras lanzar el programa, se abrirá una ventana con la interfaz gráfica de la máquina tragaperritos. Sigue las instrucciones en pantalla para jugar.

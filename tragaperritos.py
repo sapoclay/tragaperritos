@@ -7,19 +7,19 @@ from PIL import Image, ImageTk
 import os
 import pygame
 
-# Configuración de customtkinter
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("dark-blue")
+# Cargar estilos desde estilos.css manualmente
+def cargar_estilos(filepath):
+    estilos = {}
+    with open(filepath, "r") as f:
+        for linea in f:
+            linea = linea.strip()
+            if linea.startswith("--"):
+                propiedad, valor = linea.split(":")
+                estilos[propiedad.strip()] = valor.strip().rstrip(";")
+    return estilos
 
-# Constantes de estilo
-COLOR_FONDO = "#1a1a1a"
-COLOR_ACENTO = "#FFD700"
-COLOR_SECUNDARIO = "#C0C0C0"
-COLOR_BOTON = "#E74C3C"
-FUENTE_TITULO = ("Arial Black", 28, "bold")
-FUENTE_TEXTO = ("Impact", 16)
-FUENTE_NUMEROS = ("LCDMono", 20)
-FUENTE_SIMBOLOS = ("Arial", 72, "bold")
+# Cargar estilos
+estilos = cargar_estilos("estilos.css")
 
 class MaquinaTragaperras:
     def __init__(self, root):
@@ -27,6 +27,11 @@ class MaquinaTragaperras:
         self.root.title("Máquina Tragaperritos VIP")
         self.root.geometry("1000x800")
         self.root.resizable(False, False)
+        
+        # Aplicar estilos desde el archivo CSS
+        self.aplicar_estilos()
+        
+        # Configurar el fondo después de cargar los estilos
         self.root.configure(bg=COLOR_FONDO)
         
         # Inicializar pygame para reproducir sonidos
@@ -61,6 +66,21 @@ class MaquinaTragaperras:
         # Iniciar el juego
         self.pantalla_inicio()
     
+    def aplicar_estilos(self):
+        """Aplica los estilos desde el archivo estilos.css"""
+        global COLOR_FONDO, COLOR_ACENTO, COLOR_SECUNDARIO, COLOR_BOTON
+        global FUENTE_TITULO, FUENTE_TEXTO, FUENTE_NUMEROS, FUENTE_SIMBOLOS
+        
+        COLOR_FONDO = estilos["--color-fondo"]
+        COLOR_ACENTO = estilos["--color-acento"]
+        COLOR_SECUNDARIO = estilos["--color-secundario"]
+        COLOR_BOTON = estilos["--color-boton"]
+        
+        FUENTE_TITULO = (estilos["--fuente-titulo"], 26, "bold")
+        FUENTE_TEXTO = (estilos["--fuente-texto"], 14)
+        FUENTE_NUMEROS = (estilos["--fuente-numeros"], 20)
+        FUENTE_SIMBOLOS = (estilos["--fuente-simbolos"], 72, "bold")
+
     def efecto_iluminacion(self):
         colors = [COLOR_ACENTO, "#FF0000", "#00FF00", "#0000FF"]
         current_color = 0
@@ -326,7 +346,7 @@ class MaquinaTragaperras:
             fg_color=COLOR_FONDO
         )
         self.rodillos_frame.pack(pady=30, fill=tk.BOTH, expand=True, padx=30)
-        
+
         self.frames_rodillos = []
         self.labels_rodillos = []
         
@@ -336,8 +356,11 @@ class MaquinaTragaperras:
                 fg_color="#2c3e50",
                 border_width=3,
                 border_color=COLOR_ACENTO,
-                corner_radius=10
+                corner_radius=10,
+                width=150,  # Tamaño fijo
+                height=150  # Tamaño fijo
             )
+            frame_rodillo.pack_propagate(False)  # Evitar que los widgets internos cambien el tamaño del frame
             frame_rodillo.pack(side=tk.LEFT, expand=True, fill=tk.BOTH, padx=10)
             self.frames_rodillos.append(frame_rodillo)
             
@@ -345,8 +368,7 @@ class MaquinaTragaperras:
                 frame_rodillo,
                 text="?",
                 font=FUENTE_SIMBOLOS,
-                text_color=COLOR_ACENTO,
-                pady=40
+                text_color=COLOR_ACENTO
             )
             label_rodillo.pack(expand=True)
             self.labels_rodillos.append(label_rodillo)
@@ -406,6 +428,11 @@ class MaquinaTragaperras:
     def actualizar_rodillos(self, simbolos):
         for i, simbolo in enumerate(simbolos):
             self.labels_rodillos[i].configure(text=simbolo)
+            # Asegurar que el tamaño de la fuente sea siempre el mismo
+            self.labels_rodillos[i].configure(font=FUENTE_SIMBOLOS)
+        # Asegurar que los frames mantengan el tamaño fijo
+        for frame in self.frames_rodillos:
+            frame.configure(width=150, height=150)
     
     def tirar(self):
         if self.girando:
@@ -471,15 +498,14 @@ class MaquinaTragaperras:
         
         # Determinar resultados finales
         if len(rodillos_a_girar) == 3:
-            if random.random() < 0.05:
+            # Asegurar que no siempre sean iguales
+            if random.random() < 0.05:  # Baja probabilidad de que sean iguales
                 perro_elegido = random.choice(self.perros)
                 for pos in rodillos_a_girar:
                     self.resultados[pos] = perro_elegido
             else:
-                primer_perro = random.choice(self.perros)
-                segundo_perro = random.choice(self.perros)
-                tercer_perro = random.choice([p for p in self.perros if p != primer_perro] if primer_perro == segundo_perro else self.perros)
-                self.resultados = [primer_perro, segundo_perro, tercer_perro]
+                # Generar resultados aleatorios con al menos un símbolo diferente
+                self.resultados = random.sample(self.perros, 3)
         else:
             for pos in rodillos_a_girar:
                 self.resultados[pos] = random.choice(self.perros)
